@@ -12,7 +12,7 @@ using ProductApi.Context;
 namespace ProductApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250228171941_InitialCreate")]
+    [Migration("20250320212452_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -33,8 +33,8 @@ namespace ProductApi.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -45,6 +45,9 @@ namespace ProductApi.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("tinyint(1)");

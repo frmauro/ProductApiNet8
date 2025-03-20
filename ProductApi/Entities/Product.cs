@@ -6,5 +6,6 @@ public class Product
     public string? Description { get; set; }
     public bool Status { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public decimal Amount { get; set; }
+    public int Amount { get; set; }
+    public decimal Price { get; set; }
 }
