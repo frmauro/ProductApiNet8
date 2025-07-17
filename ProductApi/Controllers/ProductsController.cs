@@ -31,10 +31,17 @@ public class ProductsController : ControllerBase
         return Ok(product);
     }
 
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, Product product)
+    {
+        await _repository.UpdateAsync(product);
+        return CreatedAtAction(nameof(Update), new { id = product.Id }, product);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create(Product product)
     {
         await _repository.AddAsync(product);
-        return CreatedAtAction(nameof(Get), new { id = product.Id }, product);
+        return CreatedAtAction(nameof(Create), new { id = product.Id }, product);
     }
 }
