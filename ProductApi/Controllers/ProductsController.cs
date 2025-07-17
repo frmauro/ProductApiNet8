@@ -24,6 +24,13 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> FindById(int id)
+    {
+        var product = await _repository.GetByIdAsync(id);
+        return Ok(product);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create(Product product)
     {
